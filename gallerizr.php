@@ -43,6 +43,10 @@ foreach ($images as $image) {
         continue;
     }
 
+    if (preg_match('/.\.(zip|7z|gz|bz2|rar|tar)$/', $image)) {
+        continue;
+    }
+
     $url = 'file://' . htmlspecialchars($path) . '/' . htmlspecialchars($image);
     $contentType = getContentType($image);
     if (!$contentType) {
@@ -77,7 +81,7 @@ img, video {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    item-align: center;
+    align-items: center;
 }
 
 .gallerizr-item {

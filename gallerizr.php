@@ -1,6 +1,5 @@
 <?php
 // Design taken from https://getbootstrap.com/docs/4.1/examples/carousel/
-require_once 'common.php';
 require_once 'functions.php';
 
 $path = readline('Enter path:');

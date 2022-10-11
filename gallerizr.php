@@ -54,7 +54,7 @@ foreach ($images as $image) {
     } if (isVideo($image)) {
         $content .= "<div class='gallerizr-item'><video controls loop><source src=\"$url\"/></video></div>";
     } else {
-        $content .= "<div class='gallerizr-item'><a target=\"_blank\" href=\$url\"><img src=\"$url\" alt=\"$url\"></a></div>";
+        $content .= "<div class='gallerizr-item'><a target=\"_blank\" href=\"$url\"><img src=\"$url\" alt=\"$url\"></a></div>";
     }
 }
 

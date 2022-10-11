@@ -29,9 +29,13 @@ switch ($sort) {
 }
 
 ob_start();
-echo '<html><body><style>img, video { max-width: 100% } </style>';
+echo '<html lang="en"><body><style>img, video { max-width: 100% } </style>';
 
 foreach ($images as $image) {
+    if ($image == '..') {
+        continue;
+    }
+
     $url = 'file://' . htmlspecialchars($path) . '/' . htmlspecialchars($image);
     $contentType = getContentType($image);
     if (!$contentType) {

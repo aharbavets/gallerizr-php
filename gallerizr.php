@@ -46,11 +46,11 @@ foreach ($images as $image) {
     $url = 'file://' . htmlspecialchars($path) . '/' . htmlspecialchars($image);
     $contentType = getContentType($image);
     if (!$contentType) {
-        $content .= "<h1 class=\"error\">Unknown content type ($image)</h1>";
+        $content .= "<div class='gallerizr-item'><h1 class=\"error\">Unknown content type ($image)</h1></div>";
     } if (isVideo($image)) {
-        $content .= "<video controls loop><source src=\"$url\"/></video>";
+        $content .= "<div class='gallerizr-item'><video controls loop><source src=\"$url\"/></video></div>";
     } else {
-        $content .= "<a target=\"_blank\" href=\$url\"><img src=\"$url\" alt=\"$url\"></a>";
+        $content .= "<div class='gallerizr-item'><a target=\"_blank\" href=\$url\"><img src=\"$url\" alt=\"$url\"></a></div>";
     }
 }
 
@@ -68,6 +68,15 @@ file_put_contents($path . '/index.css', <<<'EOF'
 img, video { 
     max-width: 100% 
 }
+
+.gallerizr-container {
+
+}
+
+.gallerizr-item {
+
+}
+
 EOF
 );
 

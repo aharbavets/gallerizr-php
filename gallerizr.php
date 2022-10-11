@@ -35,6 +35,7 @@ $content = <<<'EOF'
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
+        <div class="gallerizr-container">
 EOF;
 
 foreach ($images as $image) {
@@ -53,7 +54,11 @@ foreach ($images as $image) {
     }
 }
 
-$content .= '</body></html>';
+$content .= <<<'EOF'
+            </div>
+        </body>
+    </html>
+EOF;
 
 $htmlFileName = "$path/index.html";
 

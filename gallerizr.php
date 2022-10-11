@@ -76,7 +76,8 @@ img, video {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: stretch;
+    justify-content: space-evenly;
+    item-align: center;
 }
 
 .gallerizr-item {
@@ -84,7 +85,8 @@ img, video {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: content;
-    border: red 1px solid;
+    text-align: center;
+    padding: 5px;
 }
 
 EOF

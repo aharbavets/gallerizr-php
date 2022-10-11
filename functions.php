@@ -1,7 +1,5 @@
 <?php
 
-require_once 'common.php';
-
 function isVideo($fileName) {
     $extension = pathinfo($fileName, PATHINFO_EXTENSION);;
     $extension = strtolower($extension);

@@ -32,7 +32,7 @@ $content = <<<'EOF'
 <html lang="en">
     <head>
         <title></title>
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="index.css"/>
     </head>
     <body>
         <div class="gallerizr-container">
@@ -68,13 +68,23 @@ file_put_contents($path . '/index.css', <<<'EOF'
 img, video { 
     max-width: 100% 
 }
+img, video {
+    max-width: 100%
+}
 
 .gallerizr-container {
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: stretch;
 }
 
 .gallerizr-item {
-
+    display: inline-block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: content;
+    border: red 1px solid;
 }
 
 EOF

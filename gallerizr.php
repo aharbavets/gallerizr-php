@@ -32,7 +32,7 @@ ob_start();
 echo '<html lang="en"><body><style>img, video { max-width: 100% } </style>';
 
 foreach ($images as $image) {
-    if ($image == '..') {
+    if ($image == '..' or $image == 'index.html') {
         continue;
     }
 

@@ -28,37 +28,42 @@ switch ($sort) {
         break;
 }
 
-ob_start();
-echo '<html lang="en"><body><style>img, video { max-width: 100% } </style>';
+$content = <<<'EOF'
+<html lang="en">
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+EOF;
 
 foreach ($images as $image) {
-    if ($image == '..' or $image == 'index.html') {
+    if (in_array($image, ['.', '..', 'index.html', 'index.css'])) {
         continue;
     }
 
     $url = 'file://' . htmlspecialchars($path) . '/' . htmlspecialchars($image);
     $contentType = getContentType($image);
     if (!$contentType) {
-        echo "<h1 class=\"error\">Unknown content type ($image)</h1>";
+        $content .= "<h1 class=\"error\">Unknown content type ($image)</h1>";
     } if (isVideo($image)) {
-        ?>
-        <video controls loop>
-            <source src="<?= $url ?>">
-        </video>
-        <?php
+        $content .= "<video controls loop><source src=\"$url\"/></video>";
     } else {
-        ?>
-        <a target="_blank" href="<?= $url ?>">
-            <img src="<?= $url ?>" alt="">
-        </a>
-        <?php
+        $content .= "<a target=\"_blank\" href=\$url\"><img src=\"$url\" alt=\"$url\"></a>";
     }
 }
 
-echo '</body></html>';
+$content .= '</body></html>';
 
-$content = ob_get_clean();
-$outputFileName = $path . '/index.html';
-file_put_contents($outputFileName, $content);
+$htmlFileName = "$path/index.html";
 
-`rundll32 url.dll,FileProtocolHandler file://$outputFileName`;
+file_put_contents($htmlFileName, $content);
+
+file_put_contents($path . '/index.css', <<<'EOF'
+img, video { 
+    max-width: 100% 
+}
+EOF
+);
+
+`rundll32 url.dll,FileProtocolHandler file://$htmlFileName`;

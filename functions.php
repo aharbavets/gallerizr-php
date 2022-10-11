@@ -21,7 +21,7 @@ function getContentType($fileName) {
 
     $extension = pathinfo($fileName, PATHINFO_EXTENSION);;
     $extension = strtolower($extension);
-    return $data[$extension] ?: null;
+    return $data[$extension] ?? null;
 }
 
 if (!function_exists('readline')) {

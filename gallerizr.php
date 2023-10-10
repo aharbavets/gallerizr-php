@@ -6,7 +6,7 @@ $path = preg_replace('|[\\\/]$|', '', $path);
 
 $images = $path ? scandir($path) : [];
 
-$sort = readline('How would you like to sort images [0 - date, 1 - random]?');
+$sort = '1';// readline('How would you like to sort images [0 - date, 1 - random]?');
 
 switch ($sort) {
     case '1':

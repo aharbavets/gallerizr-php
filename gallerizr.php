@@ -52,7 +52,13 @@ foreach ($images as $image) {
     if (!$contentType) {
         $content .= "<div class='gallerizr-item'><h1 class=\"error\">Unknown content type ($image)</h1></div>";
     } if (isVideo($image)) {
-        $content .= "<div class='gallerizr-item'><video controls loop><source src=\"$url\"/></video></div>";
+        $content .= "
+            <div class='gallerizr-item'>
+                <a target='_blank' href='$image'>$image</a>
+                <br/>
+                <video controls loop><source src=\"$url\"/></video>
+            </div>
+        ";
     } else {
         $content .= "<div class='gallerizr-item'><a target=\"_blank\" href=\"$url\"><img src=\"$url\" alt=\"$url\"></a></div>";
     }

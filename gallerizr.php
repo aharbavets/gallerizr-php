@@ -33,6 +33,17 @@ $content = <<<'EOF'
     <head>
         <title></title>
         <link rel="stylesheet" href="index.css"/>
+        <style>
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background: #202020;
+                }
+                
+                :root {
+                  color-scheme: dark;
+                }
+            }        
+        </style>
     </head>
     <body>
         <div class="gallerizr-container">
